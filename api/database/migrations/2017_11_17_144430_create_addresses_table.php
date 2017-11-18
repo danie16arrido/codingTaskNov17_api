@@ -20,7 +20,6 @@ class CreateAddressesTable extends Migration
             $table->string('address_line_3');
             $table->string('county');
             $table->integer('city_id');
-            $table->string('postcode');
             $table->string('lat');
             $table->string('lon');
             $table->timestamps();
