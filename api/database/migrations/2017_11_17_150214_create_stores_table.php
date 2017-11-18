@@ -14,12 +14,12 @@ class CreateStoresTable extends Migration
     public function up()
     {
         Schema::create('stores', function (Blueprint $table) {
-            $table->integer('number')->primary();
-            $table->string('name');
-            $table->string('siteid');
-            $table->integer('address_id');
-            $table->string('phone_number');
-            $table->boolean('cfs_flag');
+            $table->integer('number')->unique();
+            $table->string('name')->nullable();
+            $table->string('siteid')->nullable();
+            $table->integer('address_id')->nullable();
+            $table->string('phone_number')->nullable();
+            $table->boolean('cfs_flag')->nullable();
             $table->timestamps();
         });
     }
