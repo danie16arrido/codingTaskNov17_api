@@ -16,7 +16,8 @@ class StoreController extends ApiController
      */
     public function index()
     {
-        $stores = Store::all();
+        $stores = Store::all(['id', 'name']);
+        // $filtered = $stores->only(['id']);
         return $this->showAll($stores);
     }
 
@@ -50,7 +51,7 @@ class StoreController extends ApiController
     public function show($id)
     {
         $store = Store::findOrFail($id);
-        return response()->json(['data' => $store], 200);
+        return $this->showOne($store);
     }
 
     /**

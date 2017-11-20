@@ -6,6 +6,7 @@ use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use App\Traits\ApiResponser;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -56,6 +57,10 @@ class Handler extends ExceptionHandler
             $text = implode(" ", $model_id);
             $model_name = class_basename($exception->getModel());
             return $this->errorResponse("{$model_name} with id {$text} does not exists.", 404);
+        }
+
+        if($exception instanceof NotFoundHttpException){
+            return $this->errorResponse('The specified URL cannot be found', 404);
         }
         return parent::render($request, $exception);
     }
