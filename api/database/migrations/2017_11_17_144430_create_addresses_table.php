@@ -19,7 +19,7 @@ class CreateAddressesTable extends Migration
             $table->string('address_line_2')->unique();
             $table->string('address_line_3')->nullable();
             $table->string('county')->nullable();
-            $table->integer('city_id');
+            $table->integer('city_id')->nullable();
             $table->string('lat')->nullable();
             $table->string('lon')->nullable();
             $table->timestamps();
