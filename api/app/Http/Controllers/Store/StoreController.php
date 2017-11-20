@@ -48,7 +48,8 @@ class StoreController extends Controller
      */
     public function show($id)
     {
-        //
+        $store = Store::findOrFail($id);
+        return response()->json(['data' => $store], 200);
     }
 
     /**
