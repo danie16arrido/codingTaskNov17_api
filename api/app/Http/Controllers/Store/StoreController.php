@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Store;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Store;
+use App\Http\Controllers\ApiController;
 
-class StoreController extends Controller
+class StoreController extends ApiController
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +17,7 @@ class StoreController extends Controller
     public function index()
     {
         $stores = Store::all();
-        return response()->json(['data' => $stores], 200);
+        return $this->showAll($stores);
     }
 
     /**
